@@ -1,0 +1,55 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+package "cfe.proyecto" {
+
+    class Cliente {
+        - long medidor
+        - String paterno
+        - String materno
+        - String nombre
+        - String zona
+        - int kw
+        + Cliente(long, String, String, String, String, int)
+        + double calcularSubtotal()
+        + double calcularIVA()
+        + double calcularTotal()
+        + String generarRecibo()
+        + String getZona()
+    }
+
+    class ProcesadorArchivos {
+        - String nombreEntrada
+        - int totalClientes
+        - int[] clientesPorZona
+        - double sumaSubtotal
+        - double sumaIVA
+        - double sumaTotal
+        + ProcesadorArchivos()
+        + void procesar(String rutaArchivo)
+        - void generarResumen(String sufijo)
+        - void reiniciarContadores()
+    }
+
+    class InterfazCFE {
+        - JTextField txtArchivo
+        - JButton btnCalcular
+        - JButton btnSalir
+        - JButton btnAutor
+        + InterfazCFE()
+        - void configurarUI()
+        - void accionCalcular()
+    }
+
+    class Main {
+        + static void main(String[] args)
+    }
+
+    InterfazCFE ..> ProcesadorArchivos : usa
+    ProcesadorArchivos ..> Cliente : crea
+    Main ..> InterfazCFE : inicia
+}
+
+note "Autor: Bryan Albino Borges" as N1
+@enduml
