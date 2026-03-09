@@ -1,6 +1,6 @@
 // archivos
 .exe
-./bins_gen
+./bins_gen/*
 
 // apoyos
 *.eje.*
