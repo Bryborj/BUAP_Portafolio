@@ -127,7 +127,7 @@ int main()
     agregarArista(grafo, 2, 4, 4);
     agregarArista(grafo, 3, 1, 3);
     agregarArista(grafo, 3, 2, 9);
-    agregarArista(grafo, 3, 4, -5);
+    agregarArista(grafo, 3, 4, 2);
     agregarArista(grafo, 4, 0, 7);
     agregarArista(grafo, 4, 2, 6);
 
