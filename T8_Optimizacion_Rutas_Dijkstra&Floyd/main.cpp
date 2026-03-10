@@ -127,7 +127,7 @@ int main()
     agregarArista(grafo, 2, 4, 4);
     agregarArista(grafo, 3, 1, 3);
     agregarArista(grafo, 3, 2, 9);
-    agregarArista(grafo, 3, 4, 2);
+    agregarArista(grafo, 3, 4, -5);
     agregarArista(grafo, 4, 0, 7);
     agregarArista(grafo, 4, 2, 6);
 
@@ -144,5 +144,10 @@ int main()
 /**
  * Si el vuelo de 3 -> 4 tuviera un subsidio gubernamental 
  * y su costo pasara a ser $-5k (peso negativo),¿cual de 
- * los dos algoritmos fallarıa y por que?2
+ * los dos algoritmos fallarıa y por que?
+ * 
+ * Respuesta: En el caso es Dijkstra, ya que supone que todos los pesos de las aristas son no negativos.
+ *            un peso negativo puede llevar a que el algoritmo no encuentre la ruta más corta correctamente, 
+ *            ya que podría seguir explorando rutas que parecen más costosas debido al peso negativo, 
+ *            lo que puede resultar en un ciclo negativo y un resultado incorrecto.
  */
