@@ -1,0 +1,3 @@
+[submodule "Ensamblador/TASM"]
+	path = Ensamblador/TASM
+	url = https://github.com/zajo/TASM.git

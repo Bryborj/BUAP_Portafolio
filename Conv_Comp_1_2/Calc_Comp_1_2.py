@@ -35,7 +35,7 @@ def Comp(x, comp2, bits):
 
 def run():
     while(True):
-        os.system("cls")
+        os.system("clear")
         logic()
         res = input("¿Deseas continuar? (Ingresa cualquier letra o \'n\' para finalizar): ")
         if ('N' == res or 'n' == res):
