@@ -61,14 +61,13 @@ int kruskal(int n, vector<Arista> &arista) {
 int main() {
     vector<Arista> arista = {
         {0, 1, 4},
-        {0, 2, 4},
-        {1, 2, 2},
-        {1, 3, 5},
-        {2, 3, 5},
-        {2, 4, 9},
-        {3, 4, 7},
-        {3, 5, 6},
-        {4, 5, 3}
+        {0, 2, 2},
+        {1, 2, 5},
+        {1, 3, 10},
+        {2, 2, 5},
+        {2, 3, 8},
+        {2, 4, 3},
+        {3, 4, 6}
     };
 
     int n = 6, costo = kruskal(n, arista);
