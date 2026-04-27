@@ -88,7 +88,7 @@ public:
 };
 
 int main() {
-    // Inicializamos el CacheDNS con tabla de tamaño 11
+    // Iniciando el CacheDNS con tabla de tamaño 11
     CacheDNS cache(11);
 
     // Pruebas
