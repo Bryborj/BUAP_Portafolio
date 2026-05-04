@@ -23,7 +23,7 @@ struct User {
     }
 };
 
-vector<User> table (m);
+vector<User> table(m);
 
 int hashUsername(string user){
     int hash = 0;
@@ -45,7 +45,7 @@ long long hashPassword(string pass){
 
 void postUser(string user, string pass){
     int index = hashUsername(user);
-    // long long passHash = hashPassword(pass);
+    long long passHash = hashPassword(pass);
 
     int start = index;
 
@@ -59,17 +59,20 @@ void postUser(string user, string pass){
     }
 
     table[index].username = user;
-    table[index].passwordHash = hashPassword(pass);
+    table[index].passwordHash = passHash;
 
     cout << "El usuario " << user << " fue guardado en el indice >" << index << "<\n";
 }
 
 bool login(string user, string pass){
-    int index, start = hashUsername(user);
+    int index = hashUsername(user);
+    int start = index;
 
     while(table[index].username != ""){
         if (table[index].username == user) {
-            return tabla[index].passwordHash == hashPassword(pass);
+            long long passHash = hashPassword(pass);
+            // cout << "DEBUG -> Tabla: " << table[index].passwordHash << " | Input: " << passHash << "\n";
+            return table[index].passwordHash == passHash;
         }
 
         index = (index + 1) % m;
