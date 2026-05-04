@@ -81,3 +81,17 @@ bool login(string user, string pass){
     return false;
 }
 
+///* Uncoment to run debug table
+
+void showTable(){
+    cout << "\nTabla Hash:\n";
+    for (int i = 0; i < m; i++) {
+        cout << i << ": ";
+        if (table[i].username == "")
+            cout << "[VACIO]\n";
+        else
+            cout << table[i].username << "\n";
+    }
+}
+
+//*/
