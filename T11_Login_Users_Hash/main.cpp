@@ -18,7 +18,7 @@ struct User {
     long long passwordHash;
     
     User() {
-        username = "":
+        username = "";
         passwordHash = 0;
     }
 };
