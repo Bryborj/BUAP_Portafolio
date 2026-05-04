@@ -97,6 +97,8 @@ void showTable(){
     }
 }
 
+//*/
+
 void loginInter(string user, string pass) {
     string msgSucces = "Acceso exitoso, Bienvenido";
     string msgFail = "[!] Acceso denegado, credenciales invalidas";
@@ -106,8 +108,6 @@ void loginInter(string user, string pass) {
     else
         cout << msgFail << "\n";
 }
-
-//*/
 
 int main() {
     postUser("bry", "1234");
