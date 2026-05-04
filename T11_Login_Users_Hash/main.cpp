@@ -94,4 +94,32 @@ void showTable(){
     }
 }
 
+void loginInter(string user, string pass) {
+    string msgSucces = "Acceso exitoso, Bienvenido";
+    string msgFail = "[!] Acceso denegado, credenciales invalidas";
+
+    if (login(user, pass))
+        cout << msgSucces << "\n";
+    else
+        cout << msgFail << "\n";
+}
+
 //*/
+
+int main() {
+    postUser("bry", "1234");
+    postUser("root", "admin");
+    postUser("juan", "cachorra");
+    postUser("diego", "debug");
+    postUser("sarahi", "passw");
+
+    showTable();
+
+    loginInter("bry", "1234");
+    loginInter("root", "admin");
+    loginInter("juan", "cachorra");
+    loginInter("diego", "1234"); // Probando contraseña incorrecta
+    loginInter("sarahi", "passw");
+
+    return 0;
+}
