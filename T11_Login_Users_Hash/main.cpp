@@ -16,7 +16,7 @@ struct User {
     long passwordHash;
 };
 
-string hashUsername(string user){
+int hashUsername(string user){
     int hash = 0;
     int p = 31;
     int m = 0;
