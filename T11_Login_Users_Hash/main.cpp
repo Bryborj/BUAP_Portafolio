@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <string>
-#include <math.h>
 #include <vector>
 
 using namespace std;
@@ -39,16 +38,46 @@ long long hashPassword(string pass){
     long long hash = 0;
     int p = 31;
     for (char c : pass){
-        hash += c * pow(p, c);
+        hash = (hash * p + c);
     }
     return hash;
 }
 
 void postUser(string user, string pass){
     int index = hashUsername(user);
+    // long long passHash = hashPassword(pass);
 
+    int start = index;
+
+    while(table[index].username != "") {
+        index = (index + 1) % m;
+
+        if (index == start){
+            cout << "[!Error] La tabla se encuentra llena \n";
+            return;
+        }
+    }
+
+    table[index].username = user;
+    table[index].passwordHash = hashPassword(pass);
+
+    cout << "El usuario " << user << " fue guardado en el indice >" << index << "<\n";
 }
 
-int main(){
-    cout << "Sistema de Autenticación Segura" << endl;
+bool login(string user, string pass){
+    int index, start = hashUsername(user);
+
+    while(table[index].username != ""){
+        if (table[index].username == user) {
+            return tabla[index].passwordHash == hashPassword(pass);
+        }
+
+        index = (index + 1) % m;
+
+        if (index == start){
+            break;
+        }
+    }
+    return false;
 }
+
