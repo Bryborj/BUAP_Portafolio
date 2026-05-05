@@ -7,10 +7,13 @@ Starging proyect: 2026-05-05
 End proyect: ----
 */
 
-#include <iostream>
-#include <vector>
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <stack>
 #include <queue>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
