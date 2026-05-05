@@ -52,7 +52,22 @@ class MazeApp {
 private: 
     sf::RenderWIndow window;
     vector<Cell> grid;
-    Graph* mazeGraph;    
+    Graph* mazeGraph;
+
+    // BFS
+    queue<int> needToVisit; // FIFO
+    vector<boot> visited; // Visitados
+    vector<int> parent; // Camino
+
+    // Estados de animación
+    enum State { GENERATING, MAPPING, SOLVING, DONE };
+    State currentState;
+
+    int getIndex(int x, int y) {
+        if (x < 0 || y < 0 || x >= COLS || y >= ROWS) return -1;
+        return x + y * COLS;
+    }
+public:
 }
 
 int main() {
