@@ -17,10 +17,43 @@ End proyect: ----
 
 using namespace std;
 
+// Configs
+const int CELL_SIZE = 30;
+const int COLS = 20;
+const int ROWS = 20;
+const int WIDTH = COLS * CELL_SIZE;
+const int HEIGHT = ROWS * CELL_SIZE;
 
+// Estructura de las celdas
+struct Cell {
+    int x, y;
+    bool walls[3] = (true, true, true, true);
+    bool visited = false;
+};
 
-// Backtracking Recursivo
+// Grafo usando listas de adyacencia
+class Graph {
+    public:
+    int vertices;
+    vector<vector<int>> adj;
 
+    Graph(int n) : vertices(n) {
+        adj.resize(n);
+    }
+
+    void addEdge(int u, int v) {
+        adj[u].push_back(v);
+        adj[v].push_back(u); // Grafo no dirigido
+    }
+};
+
+// Clase principal
+class MazeApp {
+private: 
+    sf::RenderWIndow window;
+    vector<Cell> grid;
+    Graph* mazeGraph;    
+}
 
 int main() {
     cout << "Generador y Resolutor Visual de Laberintos CLI" << endl;
