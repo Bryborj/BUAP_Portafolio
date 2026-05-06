@@ -72,6 +72,25 @@ private:
         if (x < 0 || y < 0 || x >= COLS || y >= ROWS) return -1;
         return x + y * COLS;
     }
+
+    // Retornar vecinos no visitados para el backtracking
+    vector<int> getUnvisitedNeighbors(int index) {
+        vector<int> neighbors;
+        int x = grid(index).x;
+        int y = grid(index).y;
+
+        int top = getIndex(x, y - 1);
+        int bottom = getIndex(x, y + 1);
+        int left = getIndex(x - 1, y);
+        int right = getIndex(x + 1, y);
+
+        if (top != -1 && !grid[top].visited) neighbors.push_back(top);
+        if (right != -1 && !grid[right].visited) neighbors.push_back(right);
+        if (bottom != -1 && !grid[bottom].visited) neighbors.push_back(bottom);
+        if (left != -1 && !grid[left].visited) neighbors.push_back(left);
+
+        return neighbors;
+    }
 public:
     MazeApp() : window(sf::videoMode(WIDTH, HEIGHT), "Generador y Resutor Visual de Laberintos") {
         srand(time(NULL));
