@@ -96,6 +96,22 @@ void generateMazeStep() {
     // Al terminar, currentState = MAPPING;
 }
 
+//Mapeo a Grado
+void mapToGraph() {
+    // Recorrer la cuadricula, si no hay pared entre celda A y B
+    // llamar a mazeGraph-add
+
+    // Preparando BFS
+    isAddedToQueue.assign(COLS * ROWS, false);
+    parent.assign(COLS * ROWS, -1);
+
+    int startNode = 0;
+    needToVisit.push(startNode);
+    isAddedToQueue[startNode] = true;
+
+    currentState = SOLVING;
+}
+
 int main() {
     cout << "Generador y Resolutor Visual de Laberintos CLI" << endl;
     return 0;
