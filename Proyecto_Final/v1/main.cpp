@@ -82,6 +82,14 @@ public:
         mazeGraph = new Graph(COLS * ROWS);
         currentState = GENERATING;
     }
+    ~MazeApp() {
+        delete mazeGraph;
+    }
+}
+
+// Backtracking recursivo
+void generateMazeStep() {
+    
 }
 
 int main() {
