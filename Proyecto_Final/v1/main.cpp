@@ -89,7 +89,11 @@ public:
 
 // Backtracking recursivo
 void generateMazeStep() {
-    
+    // Logica de backtracking con pila (stack)
+    // 1. Eligir vecino no visitado
+    // 2. TIrar la parend entre la celda actual y el vecino
+    // 3. Marcar como visitado y apilar
+    // Al terminar, currentState = MAPPING;
 }
 
 int main() {
