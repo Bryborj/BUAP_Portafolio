@@ -135,11 +135,56 @@ void solveMazeStep() {
             }
         }
     } else {
-        currentState = DONE; //NO se encontro solucion
+        currentState = DONE; //No se encontro solucion
     }
 }
 
+// Dibujo del laberinto en SFML POO
+void draw() {
+    window.clear(sf::Color::Black);
+
+    // Celdas y paredes
+    for (const auto& cell : grid) {
+        int x = cell.x * CELL_SIZE;
+        int y = cell.y * CELL_SIZE;
+
+        // Logica gradica para celdas
+        // Lineas de pared
+        // Colores distintos
+        // isAddedToQueue[getIndex(cell.x, cell.y)] == true -> Animacion
+    }
+
+    window.display();
+}
+
+void run() {
+    // Bucle de la ventana
+    while (window.isOpen()) {
+        sf::Event event,
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+
+            // Estados para animar el proceso
+            if (currentState == GENERATING) 
+                generateMazeStep();
+            else if (currentState == MAPPING)
+                mapToGraph();
+            else if (currentState == SOLVING) {
+                solveMazeStep();
+                sf::sleep(sf::milliseconds(50)); // Control de velocidad de animación
+            }
+
+            draw(); // Redibujar en cada frame
+        }
+    }
+}
+
+
 int main() {
     cout << "Generador y Resolutor Visual de Laberintos CLI" << endl;
+    MazeApp app;
+    app.run();
     return 0;
 }
