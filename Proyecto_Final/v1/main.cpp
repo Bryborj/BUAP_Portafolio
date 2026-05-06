@@ -68,6 +68,18 @@ private:
         return x + y * COLS;
     }
 public:
+    MazeApp() : window(sf::videoMode(WIDTH, HEIGHT), "Generador y Resutor Visual de Laberintos") {
+        srand(time(NULL));
+        // Cuadricula
+        for (int y = 0; y < ROWS; y++) {
+            for (int x = 0; x < COLS; x++) {
+                Cell cell;
+                cell.x = x;
+                cell.y = y;
+                grid.push_back(cell);
+            }
+        }
+    }
 }
 
 int main() {
