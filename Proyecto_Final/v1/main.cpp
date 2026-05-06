@@ -112,6 +112,33 @@ void mapToGraph() {
     currentState = SOLVING;
 }
 
+// Busqueda a lo ancho (BFS)
+void solveMazeStep() {
+    int goalNode = (COLS * ROWS) - 1; // Ultima celda
+
+    if (!needToVisit.empty()) {
+        int current = needToVisit.front();
+        needToVisit.pop;
+
+        // Al llegar a la meta, terminar y reconstruir el camino
+        if (current == goalNode) {
+            currentState = DONE;
+            return;
+        }
+
+        // Explorar vecinos
+        for (int neighbor : mazeGraph->adj[current]) {
+            if (!isAddedToQueue[neighbor]) {
+                isAddedToQueue[neighbor] = true;
+                parent[neighbor] = current; // Guarda el rastro
+                needToVisit.push(neighbor);
+            }
+        }
+    } else {
+        currentState = DONE; //NO se encontro solucion
+    }
+}
+
 int main() {
     cout << "Generador y Resolutor Visual de Laberintos CLI" << endl;
     return 0;
