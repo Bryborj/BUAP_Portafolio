@@ -79,6 +79,8 @@ public:
                 grid.push_back(cell);
             }
         }
+        mazeGraph = new Graph(COLS * ROWS);
+        currentState = GENERATING;
     }
 }
 
