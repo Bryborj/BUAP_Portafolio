@@ -19,7 +19,7 @@ using namespace std;
 
 // Configs
 const int CELL_SIZE = 30;
-const int COLS = 20;
+const int COLS = 25;
 const int ROWS = 20;
 const int WIDTH = COLS * CELL_SIZE;
 const int HEIGHT = ROWS * CELL_SIZE;
@@ -54,10 +54,15 @@ private:
     vector<Cell> grid;
     Graph* mazeGraph;
 
+    // Variables generación
+    stack<int> genStack;
+    int currentGenCell;
+
     // BFS
     queue<int> needToVisit; // FIFO
-    vector<boot> visited; // Visitados
+    vector<bool> isAddedToQueue; // Visitados
     vector<int> parent; // Camino
+    vector<int> finalPath; // Camino final
 
     // Estados de animación
     enum State { GENERATING, MAPPING, SOLVING, DONE };
