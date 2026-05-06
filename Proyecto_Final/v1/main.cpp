@@ -91,6 +91,27 @@ private:
 
         return neighbors;
     }
+
+    // Eliminar pared entre dos celdas adyacentes
+    void removeWalls(int a, int b) {
+        int dx = grid[a].x - grid[b].x;
+        if (dx == 1) {
+            grid[a].walls[4] = false; // Izquierda
+            grid[b].walls[5] = false; // Derecha
+        } else if (dx == -1) {
+            grid[a].walls[5] = false;
+            grid[b].walls[4] = false;
+        }
+
+        int dy = grid[a].y - grid[b].y;
+        if (dy == 1) {
+            grid[a].walls = false;
+            grid[b].walls[6] = false;
+        } else if (dy == -1) {
+            grid[a].walls[6] = false;
+            grid[b].walls = false;
+        }
+    }
 public:
     MazeApp() : window(sf::videoMode(WIDTH, HEIGHT), "Generador y Resutor Visual de Laberintos") {
         srand(time(NULL));
