@@ -126,6 +126,10 @@ public:
         }
         mazeGraph = new Graph(COLS * ROWS);
         currentState = GENERATING;
+
+        currentGenCell = 0;
+        grid[currentGenCell].visited = true;
+        genStack.push(currentGenCell);
     }
     ~MazeApp() {
         delete mazeGraph;
