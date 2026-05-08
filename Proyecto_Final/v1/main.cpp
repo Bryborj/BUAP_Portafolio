@@ -150,6 +150,8 @@ void generateMazeStep() {
             currentGenCell = genStack.top(); // Retroceso (backtrack)
             genStack.pop();
         }
+    } else {
+        currentState = MAPPING; // Termina generacion, pasamos a mapeo
     }
 }
 
