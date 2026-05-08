@@ -221,12 +221,54 @@ void draw() {
         int x = cell.x * CELL_SIZE;
         int y = cell.y * CELL_SIZE;
 
+
+
         // Logica gradica para celdas
+        sf::RectangleShape cellShape(sf::Vector2f(CELL_SIZE, CELL_SIZE));
+        cellShape.setPosition(x,y);
         // Lineas de pared
         // Colores distintos
-        // isAddedToQueue[getIndex(cell.x, cell.y)] == true -> Animacion
-    }
+        if (currentState == GENERATING) {
+            if (grid[i].visited) cellShape.setFillColor(sf::Color(70, 70, 150)) // Morado (visitado)
+            else cellShape.setFillColor(sf::Color(50, 50, 50)); // Gris No visitado
+            if (i == currentGenCell) cellShape.setFillColor(sf::Color::Yellow); Celda actual
+        } else {
+            cellShape.setFillColor(sf::Color(240, 240, 240)); // Pasillos White
+            if (isAddedToQueue[i]) cellShape.setFillColor(sf::Color(180, 200 255)); // Azul claro (Explorado BFS)
+        }
 
+        window.draw(cellShape);
+
+        // Dibujar el camino final (Rojo)
+        if (currentState == DONE && find(finalPath.begin(), finalPath.end(), i) != finalPath.end()) {
+            sf::RectangleShape pathShape(sf::Vector2f(CELL_SIZE, CELL_SIZE));
+            pathShape.setPosition(x,y);
+            pathShape.setFillColor(sf::Color::Red);
+            window.draw(pathShape);
+        }
+
+        // Dibujar paredes
+        sf::RectangleShape wall;
+        wall.setFillColor(sf::Color::Black);
+        if (grid[i].walls) { 
+            wall.setSize(sf::Vector2f(CELL_SIZE, 2)); 
+            wall.setPosition(x, y); window.draw(wall); 
+        }
+        if (grid[i].walls[5]) { 
+            wall.setSize(sf::Vector2f(2, CELL_SIZE)); 
+            wall.setPosition(x + CELL_SIZE - 2, y); 
+            window.draw(wall); 
+        }
+        if (grid[i].walls[6]) { 
+            wall.setSize(sf::Vector2f(CELL_SIZE, 2)); 
+            wall.setPosition(x, y + CELL_SIZE - 2); 
+            window.draw(wall); 
+        }
+        if (grid[i].walls[4]) { 
+            wall.setSize(sf::Vector2f(2, CELL_SIZE)); 
+            wall.setPosition(x, y); window.draw(wall); 
+        }
+    }
     window.display();
 }
 
