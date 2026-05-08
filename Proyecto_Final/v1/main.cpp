@@ -136,13 +136,21 @@ public:
     }
 }
 
-// Backtracking recursivo
+// Backtracking recursivo Iterativo (Pila)
 void generateMazeStep() {
-    // Logica de backtracking con pila (stack)
-    // 1. Eligir vecino no visitado
-    // 2. TIrar la parend entre la celda actual y el vecino
-    // 3. Marcar como visitado y apilar
-    // Al terminar, currentState = MAPPING;
+    if (!genStack.empty()) {
+        vector<int> neighbors = getUnvisitedNeighbors(currentGenCell);
+        if (!neighbors.empty()) {
+            int next = neighbors[rand() % neighbors.size()]; // Elección de vecino
+            genStack.push(currentGenCell);
+            removeWalls(currentGenCell, next);
+            currentGenCell = next;
+            grid[currentGenCell].visited = true;
+        } else {
+            currentGenCell = genStack.top(); // Retroceso (backtrack)
+            genStack.pop();
+        }
+    }
 }
 
 //Mapeo a Grado
