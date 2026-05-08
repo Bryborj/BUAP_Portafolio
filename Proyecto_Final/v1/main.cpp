@@ -155,10 +155,19 @@ void generateMazeStep() {
     }
 }
 
-//Mapeo a Grado
+//Mapeo a Grafo No Dirigido
 void mapToGraph() {
     // Recorrer la cuadricula, si no hay pared entre celda A y B
     // llamar a mazeGraph-add
+
+    for (int i = 0; i < grid.size(); ++i) {
+        // Revision Derecha y Abajo
+        int right = getIndex(grid[i].x + 1, grid[i].y);
+        int down = getIndex(grid[i].x, grid[i].y + 1);
+
+        if (right != -1 && !grid[i].walls[5]) mazeGraph->addEdge(i, right);
+        if (down != -1 && !grid[i].walls[6]) mazeGraph->addEdge(i, down);
+    }
 
     // Preparando BFS
     isAddedToQueue.assign(COLS * ROWS, false);
