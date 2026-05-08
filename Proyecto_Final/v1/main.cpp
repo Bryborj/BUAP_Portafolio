@@ -188,8 +188,13 @@ void solveMazeStep() {
         int current = needToVisit.front();
         needToVisit.pop;
 
-        // Al llegar a la meta, terminar y reconstruir el camino
+        // Reconstrucción del camino más corto
         if (current == goalNode) {
+            int temp = goalNode;
+            while (temp != -1) {
+                finalPath.push_back(temp);
+                temp = parent[temp];
+            }
             currentState = DONE;
             return;
         }
