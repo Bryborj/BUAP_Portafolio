@@ -281,14 +281,16 @@ void run() {
                 window.close();
             }
 
-            // Estados para animar el proceso
+            // Logica de estados
             if (currentState == GENERATING) 
-                generateMazeStep();
+                // Aumento de velocidad generando varias celdas por fotograma
+                for (int i = 1; i<5; i++)
+                    generateMazeStep();
             else if (currentState == MAPPING)
                 mapToGraph();
             else if (currentState == SOLVING) {
                 solveMazeStep();
-                sf::sleep(sf::milliseconds(50)); // Control de velocidad de animación
+                sf::sleep(sf::milliseconds(20)); // Pausa para animar BFS
             }
 
             draw(); // Redibujar en cada frame
