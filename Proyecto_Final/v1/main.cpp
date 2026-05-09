@@ -233,7 +233,7 @@ void draw() {
             if (i == currentGenCell) cellShape.setFillColor(sf::Color::Yellow); // Celda actual
         } else {
             cellShape.setFillColor(sf::Color(240, 240, 240)); // Pasillos White
-            if (isAddedToQueue[i]) cellShape.setFillColor(sf::Color(180, 200, 255)); // Azul claro (Explorado BFS)
+            if (!isAddedToQueue.empty() && isAddedToQueue[i]) cellShape.setFillColor(sf::Color(180, 200, 255)); // Azul claro (Explorado BFS)
         }
 
         window.draw(cellShape);
@@ -281,11 +281,12 @@ void run() {
             }
         } // end pollEvent
 
-        // Logica de estados
         if (currentState == GENERATING) {
             // Aumento de velocidad generando varias celdas por fotograma
-            for (int i = 1; i<5; i++)
+            for (int i = 1; i<5; i++) {
                 generateMazeStep();
+                if (currentState != GENERATING) break;
+            }
         } else if (currentState == MAPPING) {
             mapToGraph();
         } else if (currentState == SOLVING) {
