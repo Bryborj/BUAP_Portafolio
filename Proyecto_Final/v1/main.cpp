@@ -11,6 +11,7 @@ End proyect: ----
 #include <vector>
 #include <stack>
 #include <queue>
+#include <algorithm>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -27,7 +28,7 @@ const int HEIGHT = ROWS * CELL_SIZE;
 // Estructura de las celdas
 struct Cell {
     int x, y;
-    bool walls[3] = (true, true, true, true);
+    bool walls[4] = {true, true, true, true};
     bool visited = false;
 };
 
@@ -50,7 +51,7 @@ class Graph {
 // Clase principal
 class MazeApp {
 private: 
-    sf::RenderWIndow window;
+    sf::RenderWindow window;
     vector<Cell> grid;
     Graph* mazeGraph;
 
@@ -76,8 +77,8 @@ private:
     // Retornar vecinos no visitados para el backtracking
     vector<int> getUnvisitedNeighbors(int index) {
         vector<int> neighbors;
-        int x = grid(index).x;
-        int y = grid(index).y;
+        int x = grid[index].x;
+        int y = grid[index].y;
 
         int top = getIndex(x, y - 1);
         int bottom = getIndex(x, y + 1);
@@ -96,24 +97,24 @@ private:
     void removeWalls(int a, int b) {
         int dx = grid[a].x - grid[b].x;
         if (dx == 1) {
-            grid[a].walls[4] = false; // Izquierda
-            grid[b].walls[5] = false; // Derecha
+            grid[a].walls[3] = false; // Izquierda
+            grid[b].walls[1] = false; // Derecha
         } else if (dx == -1) {
-            grid[a].walls[5] = false;
-            grid[b].walls[4] = false;
+            grid[a].walls[1] = false;
+            grid[b].walls[3] = false;
         }
 
         int dy = grid[a].y - grid[b].y;
         if (dy == 1) {
-            grid[a].walls = false;
-            grid[b].walls[6] = false;
+            grid[a].walls[0] = false; // Top
+            grid[b].walls[2] = false; // Bottom
         } else if (dy == -1) {
-            grid[a].walls[6] = false;
-            grid[b].walls = false;
+            grid[a].walls[2] = false;
+            grid[b].walls[0] = false;
         }
     }
 public:
-    MazeApp() : window(sf::videoMode(WIDTH, HEIGHT), "Generador y Resutor Visual de Laberintos") {
+    MazeApp() : window(sf::VideoMode(WIDTH, HEIGHT), "Generador y Resutor Visual de Laberintos") {
         srand(time(NULL));
         // Cuadricula
         for (int y = 0; y < ROWS; y++) {
@@ -134,7 +135,6 @@ public:
     ~MazeApp() {
         delete mazeGraph;
     }
-}
 
 // Backtracking recursivo Iterativo (Pila)
 void generateMazeStep() {
@@ -165,8 +165,8 @@ void mapToGraph() {
         int right = getIndex(grid[i].x + 1, grid[i].y);
         int down = getIndex(grid[i].x, grid[i].y + 1);
 
-        if (right != -1 && !grid[i].walls[5]) mazeGraph->addEdge(i, right);
-        if (down != -1 && !grid[i].walls[6]) mazeGraph->addEdge(i, down);
+        if (right != -1 && !grid[i].walls[1]) mazeGraph->addEdge(i, right);
+        if (down != -1 && !grid[i].walls[2]) mazeGraph->addEdge(i, down);
     }
 
     // Preparando BFS
@@ -186,7 +186,7 @@ void solveMazeStep() {
 
     if (!needToVisit.empty()) {
         int current = needToVisit.front();
-        needToVisit.pop;
+        needToVisit.pop();
 
         // Reconstrucción del camino más corto
         if (current == goalNode) {
@@ -217,24 +217,23 @@ void draw() {
     window.clear(sf::Color::Black);
 
     // Celdas y paredes
-    for (const auto& cell : grid) {
+    for (int i = 0; i < grid.size(); i++) {
+        const auto& cell = grid[i];
         int x = cell.x * CELL_SIZE;
         int y = cell.y * CELL_SIZE;
-
-
 
         // Logica gradica para celdas
         sf::RectangleShape cellShape(sf::Vector2f(CELL_SIZE, CELL_SIZE));
         cellShape.setPosition(x,y);
-        // Lineas de pared
+        
         // Colores distintos
         if (currentState == GENERATING) {
-            if (grid[i].visited) cellShape.setFillColor(sf::Color(70, 70, 150)) // Morado (visitado)
+            if (grid[i].visited) cellShape.setFillColor(sf::Color(70, 70, 150)); // Morado (visitado)
             else cellShape.setFillColor(sf::Color(50, 50, 50)); // Gris No visitado
-            if (i == currentGenCell) cellShape.setFillColor(sf::Color::Yellow); Celda actual
+            if (i == currentGenCell) cellShape.setFillColor(sf::Color::Yellow); // Celda actual
         } else {
             cellShape.setFillColor(sf::Color(240, 240, 240)); // Pasillos White
-            if (isAddedToQueue[i]) cellShape.setFillColor(sf::Color(180, 200 255)); // Azul claro (Explorado BFS)
+            if (isAddedToQueue[i]) cellShape.setFillColor(sf::Color(180, 200, 255)); // Azul claro (Explorado BFS)
         }
 
         window.draw(cellShape);
@@ -250,21 +249,21 @@ void draw() {
         // Dibujar paredes
         sf::RectangleShape wall;
         wall.setFillColor(sf::Color::Black);
-        if (grid[i].walls) { 
+        if (grid[i].walls[0]) { 
             wall.setSize(sf::Vector2f(CELL_SIZE, 2)); 
             wall.setPosition(x, y); window.draw(wall); 
         }
-        if (grid[i].walls[5]) { 
+        if (grid[i].walls[1]) { 
             wall.setSize(sf::Vector2f(2, CELL_SIZE)); 
             wall.setPosition(x + CELL_SIZE - 2, y); 
             window.draw(wall); 
         }
-        if (grid[i].walls[6]) { 
+        if (grid[i].walls[2]) { 
             wall.setSize(sf::Vector2f(CELL_SIZE, 2)); 
             wall.setPosition(x, y + CELL_SIZE - 2); 
             window.draw(wall); 
         }
-        if (grid[i].walls[4]) { 
+        if (grid[i].walls[3]) { 
             wall.setSize(sf::Vector2f(2, CELL_SIZE)); 
             wall.setPosition(x, y); window.draw(wall); 
         }
@@ -275,28 +274,29 @@ void draw() {
 void run() {
     // Bucle de la ventana
     while (window.isOpen()) {
-        sf::Event event,
+        sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
+        } // end pollEvent
 
-            // Logica de estados
-            if (currentState == GENERATING) 
-                // Aumento de velocidad generando varias celdas por fotograma
-                for (int i = 1; i<5; i++)
-                    generateMazeStep();
-            else if (currentState == MAPPING)
-                mapToGraph();
-            else if (currentState == SOLVING) {
-                solveMazeStep();
-                sf::sleep(sf::milliseconds(20)); // Pausa para animar BFS
-            }
-
-            draw(); // Redibujar en cada frame
+        // Logica de estados
+        if (currentState == GENERATING) {
+            // Aumento de velocidad generando varias celdas por fotograma
+            for (int i = 1; i<5; i++)
+                generateMazeStep();
+        } else if (currentState == MAPPING) {
+            mapToGraph();
+        } else if (currentState == SOLVING) {
+            solveMazeStep();
+            sf::sleep(sf::milliseconds(20)); // Pausa para animar BFS
         }
+
+        draw(); // Redibujar en cada frame
     }
 }
+}; // Fin clase MazeApp
 
 
 int main() {
