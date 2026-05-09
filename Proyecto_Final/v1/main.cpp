@@ -21,7 +21,7 @@ using namespace std;
 // Configs
 const int CELL_SIZE = 30;
 const int COLS = 25;
-const int ROWS = 20;
+const int ROWS = 25;
 const int WIDTH = COLS * CELL_SIZE;
 const int HEIGHT = ROWS * CELL_SIZE;
 
