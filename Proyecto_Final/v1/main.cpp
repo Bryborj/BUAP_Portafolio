@@ -136,6 +136,42 @@ public:
         delete mazeGraph;
     }
 
+    // Reinicio
+    void reset() {
+        // Reconstruccion de cuadrícula
+        grid.clear();
+        for (int y = 0; y < ROWS; y++)
+        {
+            for (int x = 0; x < COLS; x++)
+            {
+                Cell cell;
+                cell.x = x;
+                cell.y = y;
+                grid.push_back(cell);
+            }
+            
+        }
+        
+        // nuevo grafo
+        delete mazeGraph;
+        mazeGraph = new Graph(COLS * ROWS);
+
+        // Reasignar pilas y colas.
+        genStack = stack<int>();
+        needToVisit = queue<int>();
+
+        // Limpieza de vectores
+        isAddedToQueue.clear();
+        parent.clear();
+        finalPath.clear();
+
+        // Estados iniciales.
+        currentState = GENERATING;
+        currentGenCell = 0;
+        grid[currentGenCell].visited = true;
+        genStack.push(currentGenCell);
+    }
+
     // Backtracking recursivo Iterativo (Pila)
     void generateMazeStep() {
         if (!genStack.empty()) {
