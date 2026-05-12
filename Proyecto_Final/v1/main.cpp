@@ -116,6 +116,8 @@ private:
 public:
     MazeApp() : window(sf::VideoMode(WIDTH, HEIGHT), "Generador y Resutor Visual de Laberintos") {
         srand(time(NULL));
+
+        window.setFramerateLimit(120); // Fotogramas
         // Cuadricula
         for (int y = 0; y < ROWS; y++) {
             for (int x = 0; x < COLS; x++) {
@@ -315,6 +317,16 @@ public:
                 if (event.type == sf::Event::Closed) {
                     window.close();
                 }
+
+                // Boton de reinicio al precionar 'R'
+                if (event.type == sf::Event::KeyPressed) {
+                    if (event.key.code == sf::Keyboard::R)
+                    {
+                        /* code */
+                        reset();
+                    }
+                    
+                }
             } // end pollEvent */
 
             if (currentState == GENERATING) {
@@ -334,7 +346,7 @@ public:
             draw(); // Redibujar en cada frame
         }
     }
-}; // Fin clase MazeApp
+};
 
 int main() {
     cout << "Generador y Resolutor Visual de Laberintos CLI" << endl;
