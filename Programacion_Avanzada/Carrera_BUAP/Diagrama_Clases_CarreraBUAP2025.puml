@@ -1,0 +1,144 @@
+@startuml
+title Diagrama de Clases - CARRERA BUAP 2025
+
+class Persona {
+  - nombre: String
+  - apellidoP: String
+  - apellidoM: String
+  - edad: int
+  -- 
+  + mostrarDatos(): String
+}
+
+class Asistente {
+  - corredorId: String
+  - facultad: String
+  - fechaRegistro: LocalDateTime
+  --
+  + confirmarRegistro(): boolean
+  + generarCorredorId(tipo: char, consecutivo: int): String
+  + toStringCompacto(): String
+}
+
+Persona <|-- Asistente
+
+class Hombre {
+  -- 
+  + mostrarFoto(): void
+}
+class Mujer {
+  --
+  + mostrarFoto(): void
+}
+class Nino {
+  - tutor: String
+  - telefono: String
+  - escuela: String
+  --
+  + mostrarFoto(): void
+}
+
+Asistente <|-- Hombre
+Asistente <|-- Mujer
+Asistente <|-- Nino
+
+class Carrera {
+  - listaHombres: ArrayList<Hombre>
+  - listaMujeres: ArrayList<Mujer>
+  - listaNinos: ArrayList<Nino>
+  - consecutivoH: int
+  - consecutivoM: int
+  - consecutivoN: int
+  --
+  + registrarAsistente(a: Asistente): boolean
+  + buscarPorNombre(nombre: String): List<Asistente>
+  + buscarPorApellido(ap: String): List<Asistente>
+  + listarInformes(detallado: boolean, ordenarPor: String): void
+  + asignarIdYAgregar(a: Asistente): void
+  + ordenarCopiaParaImpresion(lista: List<Asistente>, criterio: String): List<Asistente>
+}
+
+Carrera "1" o-- "0..*" Hombre : "gestiona"
+Carrera "1" o-- "0..*" Mujer : "gestiona"
+Carrera "1" o-- "0..*" Nino : "gestiona"
+
+class Usuario {
+  - username: String
+  - clave: String
+  --
+  + autenticar(username: String, clave: String): boolean
+  + cambiarClave(nueva: String): void
+}
+
+interface IVentana {
+  + mostrar(): void
+  + ocultar(): void
+}
+
+class VentanaPrincipal {
+  - carrera: Carrera
+  - usuarios: List<Usuario>
+  --
+  + initUI(): void
+  + btnHombres_click(): void
+  + btnMujeres_click(): void
+  + btnNinos_click(): void
+  + btnAutor_click(): void
+}
+
+class VentanaRegistroHombres {
+  - carrera: Carrera
+  --
+  + registrar(): void
+  + buscar(): void
+  + listar1(): void
+  + listar2(): void
+  + regresar(): void
+}
+
+class VentanaRegistroMujeres {
+  - carrera: Carrera
+  --
+  + registrar(): void
+  + buscar(): void
+  + listar1(): void
+  + listar2(): void
+  + regresar(): void
+}
+
+class VentanaRegistroNinos {
+  - carrera: Carrera
+  --
+  + registrar(): void
+  + buscar(): void
+  + listar1(): void
+  + listar2(): void
+  + regresar(): void
+}
+
+VentanaPrincipal ..|> IVentana
+VentanaRegistroHombres ..|> IVentana
+VentanaRegistroMujeres ..|> IVentana
+VentanaRegistroNinos ..|> IVentana
+
+VentanaPrincipal "1" o-- "1" Carrera : "usa"
+VentanaRegistroHombres "1" o-- "1" Carrera : "registra en"
+VentanaRegistroMujeres "1" o-- "1" Carrera : "registra en"
+VentanaRegistroNinos "1" o-- "1" Carrera : "registra en"
+
+class AutorInfo {
+  - nombreCompleto: String
+  - curso: String
+  - matricula: String
+  - numeroLista: int
+  --
+  + mostrarVentanaAutor(): void
+}
+VentanaPrincipal "1" .. "1" AutorInfo : "muestra"
+
+note left
+  Carrera 1 -- 0..* Asistente
+  "Una Carrera administra cero o muchos asistentes (Hombres, Mujeres, Niños)."
+end note
+
+@enduml
