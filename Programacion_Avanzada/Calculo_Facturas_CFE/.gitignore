@@ -1,0 +1,49 @@
+# Java / Maven build
+/target/
+
+# Maven generated and build metadata
+/generated-sources/
+/generated-test-sources/
+/maven-archiver/
+/maven-status/
+/dependency-reduced-pom.xml
+
+# Compiled class files
+*.class
+
+# Test classes
+/test-classes/
+
+# NetBeans
+/nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+
+# IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# Logs and temporary files
+logs/
+*.log
+tmp/
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.jar
+*.war
+*.ear
+
+Clientes-20-2025.txt
+Nomina-20-2025.txt
+Resumen-20-2025.txt
