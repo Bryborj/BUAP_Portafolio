@@ -331,11 +331,11 @@ public:
 
             if (currentState == GENERATING) {
                 // Aumento de velocidad generando varias celdas por fotograma
-                /*for (int i = 1; i<5; i++) {
+                for (int i = 1; i<3; i++) {
                     generateMazeStep();
                     if (currentState != GENERATING) break;
-                }*/
-                generateMazeStep();
+                }
+                //generateMazeStep();
             } else if (currentState == MAPPING) {
                 mapToGraph();
             } else if (currentState == SOLVING) {
