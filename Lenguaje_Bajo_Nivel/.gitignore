@@ -1,0 +1,47 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Compilación y ejecución
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
+*.elf
+
+# Lenguaje de bajo nivel
+*.asm.bak
+*.lst
+*.map
+
+# Carpeta de comentarios
+Coment/
+
+# Archivos temporales
+*.tmp
+*.temp
+*~
+
+# Dependencias
+node_modules/
+venv/
+env/
+
+# Logs
+*.log
+
+# builds Ensamblador/
+*.exe
+*.obj
+*.map
