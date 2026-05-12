@@ -1,0 +1,12 @@
+// archivos
+.exe
+.bins_gen
+
+// apoyos
+*.eje.*
+
+.vscode
+
+*.bash
+*.elf
+build/
