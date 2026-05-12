@@ -1,11 +1,11 @@
 # REPORTE TECNICO
 
-> **Estudiante**: Bryan Albino Borges.
-> **Matricula**: 202423701
-> **Materia**: Estructura de datos.
-> **Proyecto**: Generador y Resolutor Visual de Laberintos.
-> **Maestro**: Daniel Marcelo Gonzalez Arriaga.
-> **Institucion**: Benemerita Universidad Autonoma de Puebla.
+* **Estudiante**: Bryan Albino Borges.
+* **Matricula**: 202423701
+* **Materia**: Estructura de datos.
+* **Proyecto**: Generador y Resolutor Visual de Laberintos.
+* **Maestro**: Daniel Marcelo Gonzalez Arriaga.
+* **Institucion**: Benemerita Universidad Autonoma de Puebla.
 
 En el desarrollo de esta aplicación grafica en C++ se ven integrados diversos temas que se vieron a lo largo del curso. En este se ven reflejados: Recursividad, Grafos, Arboles y otros mas para generar un laberinto de forma aleatora (usando Backtraking recursivo) y buscar la solucion con el algoritmo BFS, siendo visualizado todo este proceso mediante una ventana implementando la libreria SFML 2D.
 
