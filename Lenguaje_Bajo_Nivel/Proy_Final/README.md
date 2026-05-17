@@ -61,9 +61,10 @@ APROBADO:
 `JMP` 	Realiza un salto a una seccion en concreto sin requerir de `CMP`.
 
 **Evidencia de ejecución:**
-
 ![Compilacion](Evidencia_Funcionamiento/Compilacion.png)
-
+---
+![Ejecucion](Evidencia_Funcionamiento/Ejecucion.png)
+---
 **Datos:**
 
 - Alumno: Bryan Albino Borges
