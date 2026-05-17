@@ -1,5 +1,7 @@
 #### Evaluador de calificaciones
 
+[!NOTE] Este proyecto fue desarrollado en ensamblador con el entorno dosbox en linux y la compilacion de la utileria TASM.
+
 **Objetivo del proyecto:**
 
    Realizar integracion de los conceptos vistos en la clase de **Lenguaje de Bajo NIvel** para desarrollar un programa en ensamblador que pida al usuario ingresar una calificación de un digito, es decir del 0 al 9 y mostrar si es que el alumno aprobo o reprobó.
