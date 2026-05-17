@@ -19,9 +19,17 @@ INICIO:
     MOV AH, 01H
     INT 21H
 
-    SUB AL, 30H
+    MOV BL, AL
 
-    CMP AL, 6
+    MOV DL, 13
+    MOV AH, 02H
+    INT 21H
+    MOV DL, 10
+    INT 21H
+
+    SUB BL, 30H
+
+    CMP BL, 6
     JG APROBADO
     JE APROBADO
     JL NO_APROBADO
@@ -41,15 +49,31 @@ NO_APROBADO:
     JMP CONTINUAR
 
 CONTINUAR:
+    MOV DL, 13
+    MOV AH, 02H
+    INT 21H
+    MOV DL, 10
+    INT 21H
+
     LEA DX, msgContinuar
     MOV AH, 09H
     INT 21H
 
-    CMP AL, 'S'
-    JE INICIO
-    CMP AL, 'N'
-    JE FIN
+    MOV AH, 01H
+    INT 21H
 
+    MOV BL, AL
+
+    MOV DL, 13
+    MOV AH, 02H
+    INT 21H
+    MOV DL, 10
+    INT 21H
+
+    CMP BL, 'S'
+    JE INICIO
+    CMP BL, 'N'
+    JE FIN
 
 FIN:
     MOV AH, 4CH
