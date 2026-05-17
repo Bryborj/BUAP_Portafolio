@@ -42,6 +42,6 @@ env/
 *.log
 
 # builds Ensamblador/
-*.exe
-*.obj
-*.map
+*.EXE
+*.OBJ
+*.MAP
