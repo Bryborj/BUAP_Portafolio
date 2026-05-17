@@ -1,0 +1,6 @@
+[submodule "Lenguaje_Bajo_Nivel/Proy_Final/TASM"]
+	path = Lenguaje_Bajo_Nivel/Proy_Final/TASM
+	url = https://github.com/zajo/TASM.git
+[submodule "Lenguaje_Bajo_Nivel/Ensamblador/TASM"]
+	path = Lenguaje_Bajo_Nivel/Ensamblador/TASM
+	url = https://github.com/zajo/TASM.git
