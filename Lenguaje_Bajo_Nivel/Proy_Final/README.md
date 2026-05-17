@@ -1,6 +1,7 @@
 #### Evaluador de calificaciones
 
-[!NOTE] Este proyecto fue desarrollado en ensamblador con el entorno dosbox en linux y la compilacion de la utileria TASM.
+> [!NOTE]
+> Este proyecto fue desarrollado en ensamblador con el entorno dosbox en linux y la compilacion de la utileria TASM.
 
 **Objetivo del proyecto:**
 
@@ -31,7 +32,7 @@ Con `.DATA` declaro el inicio de la sección donde declaro variables en este cas
 
 `INT 21H` Siendo la interrupcion obligatoria para llevar a cabo cualquier proceso que se requiera del sistema el cual es dado a travez de `MOV AH, (Valor)`.
 
-`SUB BL, 30H` Aqui llevo a cabo la conversión de ASCII a numerico, ya que el valor obtenido si no lo convierto , suponiendo que e usuario ingresa "5" la entrada se refleja como 35H que es el valor hexadecimal por lo tanto se le resta 30H al registro. 
+`SUB BL, 30H` Aqui llevo a cabo la conversión de ASCII a numerico, ya que el valor obtenido si no lo convierto , suponiendo que e usuario ingresa "5" la entrada se refleja como 35H que es el valor hexadecimal por lo tanto se le resta 30H al registro.
 
 ```asm
     CMP BL, 6 ; Comparacion de la entrada
@@ -59,13 +60,9 @@ APROBADO:
 
 `JMP` 	Realiza un salto a una seccion en concreto sin requerir de `CMP`.
 
-
 **Evidencia de ejecución:**
 
 ![Compilacion](Evidencia_Funcionamiento/Compilacion.png)
-
-![Ejecucion](Evidencia_Funcionamiento/Ejecucion.png)
----
 
 **Datos:**
 
