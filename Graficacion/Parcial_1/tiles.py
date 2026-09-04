@@ -44,5 +44,5 @@ def test_tile():
     plt.show()
 
 if __name__ == "__main__":
-    #test_tile()
-    print(convertHexa("#FFFFFF"))
+    test_tile()
+    #print(convertHexa("#FFFFFF"))
