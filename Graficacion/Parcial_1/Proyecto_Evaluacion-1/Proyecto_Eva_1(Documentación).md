@@ -13,6 +13,14 @@
 - Interacción y limites: El teclado debe controlar el desplazamiento de la camara, y el código debe evitar que la cámara salga de los bordes.
 - Sustentación: Explicación técnica de la mecánica de profundidad y demostración en vivo de 10m.
 
-### Instrucciones sugeridas
+### Colores Hexadecimal
+- Madera:
+	- #D4A373 <- Brillo.
+	- #BC8A5F <- Color base.
+	- #8B5E34 <- Sombra clara (Las betas).
+	- #603813 <- Sombra oscura / Oclusión
+- Piedra:
+- Pasto:
+- Tierra:
+- Agua:
 
--
