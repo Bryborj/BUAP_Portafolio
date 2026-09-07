@@ -68,7 +68,7 @@ def buildMap():
             tile_id = map[i][j]
             data, palette = tg.getTile(tile_id)
             rgb_data = tg.converterRGB(data, palette)
-            print(rgb_data.shape)
+            # print(rgb_data.shape) # Debug
 
             y = i * 8
             x = j * 8
@@ -83,7 +83,7 @@ def run():
 
         img.set_data(viewport)
 
-        ax.set_title(f"Posición: ({POS_X}, {POS_Y}) | Tile: ({POS_X / 8}, {POS_Y / 8}) | Viewport: ({VIEWPORT_W} x {VIEWPORT_H})")
+        ax.set_title(f"Posición: ({POS_X}, {POS_Y}) | Tile: ({POS_X / 8}, {POS_Y / 8}) \n Viewport: ({VIEWPORT_W} x {VIEWPORT_H})")
         fig.canvas.draw_idle()
 
     def keyboard(event):
@@ -111,15 +111,19 @@ def run():
     fig.canvas.mpl_connect("key_press_event", keyboard)
     #plt.show()
 
-run()
+def showMap(): # Muestra el mapa de tiles de 40x40
+    fig1, ax1 = plt.subplots()
+    ax1.imshow(tile_map, interpolation='nearest', cmap='gray')
+    ax1.set_title(f"Mapa de TILES de 40 x 40")
 
+run()
 # ============================================================================
 # |                                                                          |
 # |                       VISUALIZACIÓN DE TILES                             |
 # |                                                                          |
 # ============================================================================
-
+showMap()
 # Previzualiza todos los Tiles disponibles.
-tg.DEBUG()
+#tg.DEBUG()
 
 plt.show()
