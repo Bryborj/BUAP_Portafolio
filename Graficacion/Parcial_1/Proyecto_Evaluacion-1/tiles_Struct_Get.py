@@ -246,5 +246,3 @@ def DEBUG():
     #ax.tick_params(which='both', bottom=False, left=False, labelbottom=False, labelleft=False)
 
     plt.show()
-
-DEBUG()
