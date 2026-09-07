@@ -247,4 +247,4 @@ def DEBUG():
 
     plt.show()
 
-# DEBUG()
+DEBUG()
