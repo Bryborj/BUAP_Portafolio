@@ -1,11 +1,11 @@
 # Mapa con Tiles de 8x8
 
-###Scripts necesarios
+## Scripts necesarios
 
 - tiles_Struct_Get.py
 - Proyecto_Eva_1.py
 
-### EJecución
+## Ejecución
 
 Crear entorno virtual
 

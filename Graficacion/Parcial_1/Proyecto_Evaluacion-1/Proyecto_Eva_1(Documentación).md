@@ -93,3 +93,26 @@ Propósito: Peligro ambiental, foso del inframundo, cráteres activos y trampas.
 - #f97316 (Naranja volcánico): Transición térmica entre el núcleo y la corteza.
 - #c2410c (Rojo teja ardiente): Borde de enfriamiento del magma.
 - #9a3412 (Marrón rojizo quemado): Escoria y costra de roca volcánica enfriada.
+
+### Explicación tecnica de los efectos de profundidad
+
+- ¿Qué información de mapa se utiliza?
+  - La información que da el efecto de sombras es implementada en cada tile desde su construcción haciendo que algunas unidades tengan tonos mas oscuros y otras mas claros.
+- ¿Cómo contribuye a generar sensación de profundidad?
+  - Contribuye a generar sensación de profundidad al utilizar diferentes tonos de color para simular la luz y la sombra en el mapa.
+
+### Presentación | Criterios de evaluación
+
+| Actividad                 | Tiempo |
+| ------------------------- | ------ |
+| Explicaión y objetivo     | 2 Min  |
+| Técnica de profundiad     | 2 Min  |
+| Cámara y viewport         | 2 Min  |
+| Demostración del programa | 3 Min  |
+| Preguntas y cierre        | 1 Min  |
+
+- La demostración debera mostrar:
+  - El mapa con el efecto de profundidad.
+  - El viewport de 8 × 8.
+  - El desplazamiento de la cámara mediante el teclado.
+  - Diferentes zonas del mapa durante el recorrido.
