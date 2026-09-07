@@ -30,7 +30,7 @@ Ejecución del script principal
 python Proyecto_Eva_1.py
 ```
 
-> [!NOTE] \
+> [!NOTE]
 > Por defecto se abriran 2 ventanas, una del mapa completo y otra con un view port de 8x8 tiles es decir 64x64 unidades. \
 > El tamaño del mapa completo es de 40 x 40 tiles es decir 320 x 320 unidades.
 
