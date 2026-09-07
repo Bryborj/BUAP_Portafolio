@@ -109,7 +109,7 @@ def run():
     img = ax.imshow(viewport, interpolation='nearest', cmap='gray')
     ax.set_title(f"Posición: ({POS_X}, {POS_Y})")
     fig.canvas.mpl_connect("key_press_event", keyboard)
-    plt.show()
+    #plt.show()
 
 run()
 
@@ -120,4 +120,6 @@ run()
 # ============================================================================
 
 # Previzualiza todos los Tiles disponibles.
-# tg.DEBUG()
+tg.DEBUG()
+
+plt.show()

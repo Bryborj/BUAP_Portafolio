@@ -244,5 +244,3 @@ def DEBUG():
     #ax.set_yticks(np.arange(-0.5, 8, 1), minor=True)
     #ax.grid(which='minor', color='black', linestyle='-', linewidth=0.5)
     #ax.tick_params(which='both', bottom=False, left=False, labelbottom=False, labelleft=False)
-
-    plt.show()
