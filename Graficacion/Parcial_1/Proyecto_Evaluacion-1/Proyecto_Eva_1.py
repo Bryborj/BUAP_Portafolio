@@ -1,10 +1,19 @@
+from matplotlib.pyplot import draw
 from tiles_Struct_Get import converterRGB
 import matplotlib.pyplot as plt
 import numpy as np
 import tiles_Struct_Get as tg
 
+VIEWPORT_H = 64
+VIEWPORT_W = 64
+POS_X = 0
+POS_Y = 0
+
+MAX_X = 8 * 40
+MAX_Y = 8 * 40
+
 # maps of the tiles
-tile_map = np.zeros((40 * 8, 40 * 8, 3), dtype=np.uint8)  # 40 x 40 tiles, all initially 0
+tile_map = np.zeros((MAX_X, MAX_Y, 3), dtype=np.uint8)  # 40 x 40 tiles, all initially 0
 map = [
     [2,2,2,2,2,2,2,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
     [2,2,2,2,2,2,2,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
@@ -50,6 +59,7 @@ map = [
 ]
 
 def buildMap():
+    global tile_map
     rows = len(map) * 8
     cols = len(map[0]) * 8
 
@@ -65,11 +75,43 @@ def buildMap():
 
             tile_map[y:y+8, x:x+8] = rgb_data
 
+def run():
+    def update_viewport():
+        global POS_X, POS_Y
+
+        viewport = tile_map[POS_Y:POS_Y + VIEWPORT_H, POS_X:POS_X + VIEWPORT_W]
+
+        img.set_data(viewport)
+
+        ax.set_title(f"Posición: ({POS_X}, {POS_Y}) | Tile: ({POS_X / 8}, {POS_Y / 8}) | Viewport: ({VIEWPORT_W} x {VIEWPORT_H})")
+        fig.canvas.draw_idle()
+
+    def keyboard(event):
+        global POS_X, POS_Y
+
+        if event.key in ("left", "a"):
+            POS_X = max(0, POS_X - 8)
+        elif event.key in ("right", "d"):
+            POS_X = min(MAX_X - VIEWPORT_W, POS_X + 8)
+        elif event.key in ("up", "w"):
+            POS_Y = max(0, POS_Y - 8)
+        elif event.key in ("down", "s"):
+            POS_Y = min(MAX_Y - VIEWPORT_H, POS_Y + 8)
+        elif event.key == "escape":
+            plt.close(fig)
+            return
+        update_viewport()
+
+        
+    buildMap()
     fig, ax = plt.subplots(figsize=(5, 5))
-    ax.imshow(tile_map, interpolation='nearest')
+    viewport = tile_map[POS_Y:POS_Y + VIEWPORT_H, POS_X:POS_X + VIEWPORT_W]
+    img = ax.imshow(viewport, interpolation='nearest', cmap='gray')
+    ax.set_title(f"Posición: ({POS_X}, {POS_Y})")
+    fig.canvas.mpl_connect("key_press_event", keyboard)
     plt.show()
-            
-buildMap()
+
+run()
 
 # ============================================================================
 # |                                                                          |
@@ -78,4 +120,4 @@ buildMap()
 # ============================================================================
 
 # Previzualiza todos los Tiles disponibles.
-#tg.DEBUG()
+# tg.DEBUG()
