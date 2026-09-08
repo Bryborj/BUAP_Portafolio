@@ -2,11 +2,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# Tile de madera
+# Tile de pasto/hierva
 def grassTile():
-    # 1. Definir la paleta de colores de la madera (de más claro a más oscuro)
     PALETTE = {
-        0: [0x4A, 0xDE, 0x80],  # Color Base
+        0: [0x4A, 0xDE, 0x80],  # Color Base #4ADE80 ó 74, 222, 128
         1: [0x22, 0xC5, 0x5E],  # Color de volumen
         2: [0x86, 0xEF, 0xAC],  # Brillo / Puntos de luz
         3: [0x16, 0x34, 0x4A],  # Sombras / Profundidad
@@ -101,7 +100,7 @@ def SandTile():
     ])
     return tile_data, PALETTE
 
-# Tile de agua
+# Tile de Piedra
 def WallStoneTile():
     # 1. Definir la paleta de colores del agua (de más claro a más oscuro)
     PALETTE = {
@@ -244,3 +243,6 @@ def DEBUG():
     #ax.set_yticks(np.arange(-0.5, 8, 1), minor=True)
     #ax.grid(which='minor', color='black', linestyle='-', linewidth=0.5)
     #ax.tick_params(which='both', bottom=False, left=False, labelbottom=False, labelleft=False)
+
+#DEBUG()
+#plt.show()

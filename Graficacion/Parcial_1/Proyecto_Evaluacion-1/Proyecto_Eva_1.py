@@ -1,5 +1,3 @@
-from matplotlib.pyplot import draw
-from tiles_Struct_Get import converterRGB
 import matplotlib.pyplot as plt
 import numpy as np
 import tiles_Struct_Get as tg
@@ -8,6 +6,7 @@ VIEWPORT_H = 64
 VIEWPORT_W = 64
 POS_X = 0
 POS_Y = 0
+
 
 MAX_X = 8 * 40
 MAX_Y = 8 * 40
@@ -69,7 +68,7 @@ def buildMap():
             data, palette = tg.getTile(tile_id)
             rgb_data = tg.converterRGB(data, palette)
             # print(rgb_data.shape) # Debug
-
+            # [255,255,255]
             y = i * 8
             x = j * 8
 
