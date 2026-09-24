@@ -221,10 +221,14 @@ def DEBUG():
 
     x = 0
     y = 0
+    t = -1
 
     for i in range(8):
         for j in range(8):
-            data, palette = getTile(i % 7)
+            t += 1
+            if t == 8:
+                t = 0
+            data, palette = getTile(t)
             rgb_tile = converterRGB(data, palette)
 
             y = i * 8

@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tiles_Struct_Get as tg
 
-VIEWPORT_H = 64
-VIEWPORT_W = 64
+VIEWPORT_H = 8 * 8
+VIEWPORT_W = 8 * 8
 POS_X = 0
 POS_Y = 0
 
