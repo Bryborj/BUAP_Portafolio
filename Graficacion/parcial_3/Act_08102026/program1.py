@@ -1,8 +1,8 @@
+import ctypes
+
 import glfw
 import numpy as np
 from OpenGL.GL import *
-import ctypes
-
 
 # -----------------------------------------
 # 1. Inicializar GLFW
@@ -16,13 +16,7 @@ if not glfw.init():
 # 2. Crear ventana
 # -----------------------------------------
 
-window = glfw.create_window(
-    800,
-    600,
-    "VAO VBO EBO + Shaders",
-    None,
-    None
-)
+window = glfw.create_window(800, 600, "VAO VBO EBO + Shaders", None, None)
 
 if not window:
     glfw.terminate()
@@ -36,22 +30,29 @@ glfw.make_context_current(window)
 # 3. Vértices
 # -----------------------------------------
 
-vertices = np.array([
-    -0.5, -0.5,   # vértice 0
-     0.5, -0.5,   # vértice 1
-     0.5,  0.5,   # vértice 2
-    -0.5,  0.5    # vértice 3
-], dtype=np.float32)
+vertices = np.array(
+    [
+         -0.5, 0.0,  # vértice 0
+         -0.25, 0.5,  # vértice 1
+          0.0, 0.0,  # vértice 2
+          
+         -0.25, 0.5,  # vértice 3
+          0.0, 0.0,  # vértice 4
+          0.25, 0.5,  # vértice 5
+          
+          0.0, 0.0,   # vértice 6
+          0.25, 0.5,  # vértice 7
+          0.5, 0.0,   # vértice 8
+    ],
+    dtype=np.float32,
+)
 
 
 # -----------------------------------------
 # 4. Índices
 # -----------------------------------------
 
-indices = np.array([
-    0, 1, 2,
-    2, 3, 0
-], dtype=np.uint32)
+indices = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8], dtype=np.uint32)
 
 
 # -----------------------------------------
@@ -92,10 +93,7 @@ void main()
 
 vertex_shader = glCreateShader(GL_VERTEX_SHADER)
 
-glShaderSource(
-    vertex_shader,
-    vertex_shader_source
-)
+glShaderSource(vertex_shader, vertex_shader_source)
 
 glCompileShader(vertex_shader)
 
@@ -106,10 +104,7 @@ glCompileShader(vertex_shader)
 
 fragment_shader = glCreateShader(GL_FRAGMENT_SHADER)
 
-glShaderSource(
-    fragment_shader,
-    fragment_shader_source
-)
+glShaderSource(fragment_shader, fragment_shader_source)
 
 glCompileShader(fragment_shader)
 
@@ -121,15 +116,9 @@ glCompileShader(fragment_shader)
 shader_program = glCreateProgram()
 
 
-glAttachShader(
-    shader_program,
-    vertex_shader
-)
+glAttachShader(shader_program, vertex_shader)
 
-glAttachShader(
-    shader_program,
-    fragment_shader
-)
+glAttachShader(shader_program, fragment_shader)
 
 
 glLinkProgram(shader_program)
@@ -158,18 +147,10 @@ glBindVertexArray(VAO)
 
 VBO = glGenBuffers(1)
 
-glBindBuffer(
-    GL_ARRAY_BUFFER,
-    VBO
-)
+glBindBuffer(GL_ARRAY_BUFFER, VBO)
 
 
-glBufferData(
-    GL_ARRAY_BUFFER,
-    vertices.nbytes,
-    vertices,
-    GL_STATIC_DRAW
-)
+glBufferData(GL_ARRAY_BUFFER, vertices.nbytes, vertices, GL_STATIC_DRAW)
 
 
 # -----------------------------------------
@@ -177,12 +158,7 @@ glBufferData(
 # -----------------------------------------
 
 glVertexAttribPointer(
-    0,
-    2,
-    GL_FLOAT,
-    GL_FALSE,
-    2 * vertices.itemsize,
-    ctypes.c_void_p(0)
+    0, 2, GL_FLOAT, GL_FALSE, 2 * vertices.itemsize, ctypes.c_void_p(0)
 )
 
 
@@ -195,18 +171,10 @@ glEnableVertexAttribArray(0)
 
 EBO = glGenBuffers(1)
 
-glBindBuffer(
-    GL_ELEMENT_ARRAY_BUFFER,
-    EBO
-)
+glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO)
 
 
-glBufferData(
-    GL_ELEMENT_ARRAY_BUFFER,
-    indices.nbytes,
-    indices,
-    GL_STATIC_DRAW
-)
+glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.nbytes, indices, GL_STATIC_DRAW)
 
 
 # -----------------------------------------
@@ -221,38 +189,22 @@ glBindVertexArray(0)
 # -----------------------------------------
 
 while not glfw.window_should_close(window):
-
     # Limpiar pantalla
-    glClearColor(
-        0.1,
-        0.1,
-        0.1,
-        1.0
-    )
+    glClearColor(0.1, 0.1, 0.1, 1.0)
 
     glClear(GL_COLOR_BUFFER_BIT)
-
 
     # Usar shaders
     glUseProgram(shader_program)
 
-
     # Activar VAO
     glBindVertexArray(VAO)
 
-
     # Dibujar
-    glDrawElements(
-        GL_TRIANGLES,
-        6,
-        GL_UNSIGNED_INT,
-        None
-    )
-
+    glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, None)
 
     # Mostrar resultado
     glfw.swap_buffers(window)
-
 
     # Procesar eventos
     glfw.poll_events()
