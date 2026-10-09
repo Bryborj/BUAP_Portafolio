@@ -65,17 +65,17 @@ vertex_shader_source = """
 layout(location = 0) in vec2 position;
 
 // Variable que recibiremos desde Python
-uniform float desplazamientoX;
+uniform float desplazamientoY;
 
 void main()
 {
-    // Movemos el vértice en X
-    float x = position.x + desplazamientoX;
+    // Movemos el vértice en Y
+    float y = position.y + desplazamientoY;
 
     // Posición final
     gl_Position = vec4(
-        x,
-        position.y,
+        position.x,
+        y,
         0.0,
         1.0
     );
@@ -96,9 +96,9 @@ void main()
 {
     // Color rojo
     color = vec4(
+        0.0,
+        0.0,
         1.0,
-        0.0,
-        0.0,
         1.0
     );
 }
@@ -259,9 +259,9 @@ glBufferData(
 # 15. OBTENER LA UBICACIÓN DEL UNIFORM
 # ============================================================
 
-location_x = glGetUniformLocation(
+location_y = glGetUniformLocation(
     shader_program,
-    "desplazamientoX"
+    "desplazamientoY"
 )
 
 
@@ -310,7 +310,7 @@ while not glfw.window_should_close(window):
     # Calcular posición X
     # --------------------------------------------------------
 
-    desplazamientoX = np.sin(tiempo) * 0.5
+    desplazamientoY = np.sin(tiempo) * 0.5
 
 
     # --------------------------------------------------------
@@ -318,8 +318,8 @@ while not glfw.window_should_close(window):
     # --------------------------------------------------------
 
     glUniform1f(
-        location_x,
-        desplazamientoX
+        location_y,
+        desplazamientoY
     )
 
 

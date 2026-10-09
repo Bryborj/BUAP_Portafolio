@@ -16,7 +16,28 @@ Evidencia de ejecución.
 
 ![1791508891523](image/REPORTE/1791508891523.png)
 
-
 # Ejercicio 2.
 
 ## Modificar el codifo para que la figura se mueva de arriba - abajo.
+
+Evidencia de modificaciones.
+
+Aqui eh solo modificado el nombre de las variables y en cambiado que la posicion en el eje x sea fija y que y varie de manera que en la posicion final solo se invierte el codigo.
+
+![1791509498004](image/REPORTE/1791509498004.png)
+
+De igual manera solo cambie el nombre de las variables en las siguientes 2 capturas.
+
+![1791509512934](image/REPORTE/1791509512934.png)
+
+![1791509519101](image/REPORTE/1791509519101.png)
+
+Evidencia de funcionamiento.
+
+<video width="640" controls>
+  <source src="./image/REPORTE/1791510008254.mp4" type="video/mp4">
+  Tu navegador no soporta la reproducción de video.
+</video>
+
+
+[Enlace al repositorio de GitHub para ver el video.](https://github.com/Bryborj/BUAP_Portafolio/blob/main/Graficacion/parcial_3/Act_08102026/image/REPORTE/1791510008254.mp4)
