@@ -1,3 +1,4 @@
 matplotlib
 PyOpenGL
 PyOpenGL_accelerate
+glfw

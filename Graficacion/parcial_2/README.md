@@ -2,23 +2,21 @@
 
 ### Transformaciones 2D mediante matrices 3x3 utilizando multiproceso e hilos
 
-
 ```
 Tarea
 |
 |-> P1 -> Sumar resultados
-|   |-> H1 -> Multiplicar A*B
-|   |-> H2
+|    |-> H1 -> Multiplicar A*B
+|    |-> H2 ...
 |
 |-> P2
-|   |-> H1
-|   |-> H2
+|    |-> H1 ...
+|    |-> H2 ...
 |
 |-> P3
-|   |-> H1
-|   |-> H2
+     |-> H1 ...
+     |-> H2 ...
 ```
-
 
 ## Proyecto (Evaluación):
 
