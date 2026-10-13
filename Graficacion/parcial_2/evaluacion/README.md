@@ -4,7 +4,7 @@ Este directorio contiene todo el material desarrollado para la **Evaluación de 
 
 ---
 
-## 📁 Estructura de Archivos
+## Estructura de Archivos
 
 1. **`propuesta_mejora.py`**:
    - Implementación en código Python de la propuesta de mejora lógica y del algoritmo original para comparación.
@@ -19,7 +19,7 @@ Este directorio contiene todo el material desarrollado para la **Evaluación de 
    - **Documento formal del entregable para el profesor**.
    - Incluye el **Diagnóstico Crítico** de las fallas lógicas de `example_multiprocessing.py`.
    - Incluye el **Diagrama de Flujo (Mermaid)** y el **Pseudocódigo Estructurado**.
-   - Tabla comparativa de complejidad algorítmica ($O(N^3)$ vs $O(N)$) y análisis de ahorro de memoria.
+   - Tabla comparativa de complejidad algorítmica (O(N^3) vs O(N)) y análisis de ahorro de memoria.
 
 3. **`GUIA_EXPOSICION_10MIN.md`**:
    - Libreto organizado para **3 integrantes de equipo** con un límite estricto de **10 minutos**:
@@ -30,7 +30,7 @@ Este directorio contiene todo el material desarrollado para la **Evaluación de 
 
 ---
 
-## 🚀 Resumen de Resultados Empíricos
+## Resumen de Resultados Empíricos
 
 Al ejecutar `propuesta_mejora.py` contra el código original:
 - **Matriz 3x3:** Reducción de 27 a 3 hilos (88.9% menos). Aceleración: **2.34x**.
