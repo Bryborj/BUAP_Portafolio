@@ -39,6 +39,7 @@ import time
 import random
 import threading
 from multiprocessing import Process, Queue
+import psutil
 
 
 # =============================================================================
@@ -157,7 +158,7 @@ def multiplicar_propuesta_mejora(A, B, num_procesos=None):
     """
     filas_A = len(A)
     cols_A = len(A[0])
-    cols_B = len(B[0])
+    # cols_B = len(B[0])
 
     if cols_A != len(B):
         raise ValueError("Las dimensiones de las matrices no son compatibles para multiplicación.")
@@ -222,6 +223,16 @@ def verificar_igualdad(matriz1, matriz2):
             return False
     return True
 
+def imprimir_ram():
+    # Obtiene el identificador del proceso actual
+    proceso = psutil.Process(os.getpid())
+
+    # Obtiene la memoria en bytes y la convierte a Megabytes (MB)
+    ram_bytes = proceso.memory_info().rss
+    ram_mb = ram_bytes / (1024 * 1024)
+
+    print(f"La app está consumiendo: {ram_mb:.2f} MB de RAM")
+
 
 def ejecutar_benchmark(dimensiones=(3, 10, 20)):
     """
@@ -274,6 +285,7 @@ def ejecutar_benchmark(dimensiones=(3, 10, 20)):
     print("CONCLUSIÓN: La propuesta de mejora lógica erradica la serialización y el")
     print("overhead del GIL y cambio de contexto, demostrando viabilidad teórica y práctica.")
     print("=" * 75)
+    imprimir_ram()
 
 
 if __name__ == "__main__":

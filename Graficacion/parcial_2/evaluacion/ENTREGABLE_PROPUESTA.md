@@ -3,7 +3,7 @@
 **Materia:** Graficacións
 **Unidad:** Unidad 2
 **Integrantes:** Bryan Albino Borges, Santiago Xochicale Rocha.
-**Fecha:** Octubre 2026 
+**Fecha:** Octubre 2026
 
 ## 1. Resumen de Requisitos y Justificación de la Propuesta
 
@@ -100,7 +100,7 @@ flowchart TD
 
     subgraph ProcesoWorker ["Proceso Worker (Por cada Chunk)"]
         ReceiveChunk[Recibir Submatriz A_chunk y Matriz B] --> SpawnThreads[Crear hilos: 1 hilo por cada fila del chunk]
-      
+    
         subgraph HiloCalculo ["Hilo de Fila"]
             DotProduct["Calcular Producto Punto de Fila i con todas las columnas de B: Fila_res = A_i · B"]
         end
@@ -141,7 +141,7 @@ ALGORITMO MultiplicacionMatricialMejorada(A, B):
     7. PARA inicio_fila DESDE 0 HASTA N CON PASO TamanoChunk HACER:
            fin_fila <- MINIMO(inicio_fila + TamanoChunk, N)
            sub_A <- A[inicio_fila : fin_fila]
-         
+       
            proceso <- CrearProceso(WorkerChunk, 
                                    Argumentos = (inicio_fila, sub_A, B, ColaResultados))
            proceso.Iniciar()  // No bloqueante
@@ -203,13 +203,13 @@ FIN SUBRUTINA
 
 ## 6. Comparativa de Rendimiento y Complejidad Teórica
 
-| Métrica / Aspecto                         | Programa Original (`example_multiprocessing.py`)                                                                        | Propuesta de Mejora (`evaluacion/propuesta_mejora.py`)      | Impacto Teórico / Beneficio                                |
-| :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------ | :---------------------------------------------------------- |
-| **Grado de Paralelismo de Procesos** | Secuencial ($1$ proceso a la vez por `q.get()` en bucle) | Paralelo Real ($P = \min(\text{cores}, N)$ simultáneos) | Aprovechamiento total del hardware multi-core.                |                                                             |
-| **Granularidad de Hilos**            | Escalar:$1$ hilo por cada multiplicación $x \cdot y$                                                                 | Vectorial:$1$ hilo por fila del bloque                      | Se eleva el tiempo útil de CPU sobre el tiempo de control. |
-| **Cantidad de Hilos Creados**        | $\Theta(N^3)$ hilos                                                                                                     | $\Theta(N)$ hilos                                           | Reducción de más del**99%** de sobrecarga.          |
-| **Sobrecarga de Context Switching**  | Extrema (miles de llamadas al scheduler del SO)                                                                           | Mínima (adaptada al número de núcleos e hilos del sistema) | La CPU ejecuta aritmética en vez de cambios de estado.     |
-| **Orden de Resultados**              | No determinista si se desincroniza la cola                                                                                | Determinista indexado por tupla`(start_row, chunk)`         | Integridad matemática garantizada.                         |
+| Métrica / Aspecto                         | Programa Original (`example_multiprocessing.py`)                                                                                                                   | Propuesta de Mejora (`evaluacion/propuesta_mejora.py`)      | Impacto Teórico / Beneficio                            |
+| :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------ | :------------------------------------------------------ |
+| **Grado de Paralelismo de Procesos** | Secuencial ($1$ proceso a la vez por `q.get()` en bucle) | Paralelo Real ($P = \min(\text{cores}, N)$ simultáneos)                                            | Aprovechamiento total del hardware multi-core.                |                                                         |
+| **Granularidad de Hilos**            | Escalar:$1$ hilo por cada multiplicación $x \cdot y$                                                                 | Vectorial:$1$ hilo por fila del bloque | Se eleva el tiempo útil de CPU sobre el tiempo de control.   |                                                         |
+| **Cantidad de Hilos Creados**        | $\Theta(N^3)$ hilos                                                                                                                                                | $\Theta(N)$ hilos                                           | Reducción de más del**99%** de sobrecarga.      |
+| **Sobrecarga de Context Switching**  | Extrema (miles de llamadas al scheduler del SO)                                                                                                                      | Mínima (adaptada al número de núcleos e hilos del sistema) | La CPU ejecuta aritmética en vez de cambios de estado. |
+| **Orden de Resultados**              | No determinista si se desincroniza la cola                                                                                                                           | Determinista indexado por tupla`(start_row, chunk)`         | Integridad matemática garantizada.                     |
 
 ### Resultados Experimentales Obtenidos en Pruebas Reales:
 
