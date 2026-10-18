@@ -1,5 +1,5 @@
 <?php
-$_CONECTION_STRING = "mysql:host=db;dbname=practice_db;charset=utf8mb4";
+$_CONECTION_STRING = "mysql:host=db;dbname=sakila;charset=utf8mb4";
 $USER = "devuser";
 $PASS = "root";
 $options = [
@@ -13,10 +13,12 @@ function conect(){
     try {
         $pdo = new PDO($_CONECTION_STRING, $USER, $PASS, $options);
         $pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
+        echo("<script>alert(\"Conexion con la base de datos realizada con exito.\")</script>");
         return $pdo;
     }
     catch (PDOException $e) {
         echo "<p style='color: orange;'>Esperando o error de conexión a base de datos: " . $e->getMessage() . "</p>";
+        echo "<script>window.StopWhateverBelow()</script>";
         return null;
     }
 }
