@@ -95,11 +95,14 @@ catch (\PDOException $e) {
                 </form>
 
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="conditions.php" class="btn-primary" style="background: #d97706;">
+                        Condiciones
+                    </a>
                     <a href="proyections.php" class="btn-primary" style="background: #7c3aed;">
-                        📊 Proyecciones
+                        Proyecciones
                     </a>
                     <a href="tablas_origen.php" class="btn-outline">
-                        📋 Tablas de origen (3 filas c/u)
+                        Tablas de origen (3 filas c/u)
                     </a>
                 </div>
             </div>

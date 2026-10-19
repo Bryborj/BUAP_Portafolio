@@ -63,8 +63,9 @@ catch (\PDOException $e) {
                 <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">Muestra de las 5 tablas base que intervienen en la operación de relación (3 filas cada una)</p>
             </div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <a href="proyections.php" class="btn-back" style="background: #7c3aed;">📊 Proyecciones</a>
-                <a href="join.php" class="btn-back">← Volver a JOIN</a>
+                <a href="conditions.php" class="btn-back" style="background: #d97706;">Condiciones</a>
+                <a href="proyections.php" class="btn-back" style="background: #7c3aed;">Proyecciones</a>
+                <a href="join.php" class="btn-back">Volver a JOIN</a>
             </div>
         </div>
 
@@ -226,7 +227,7 @@ catch (\PDOException $e) {
             </div>
 
             <div style="text-align: center; margin-top: 20px;">
-                <a href="join.php" class="btn-back">← Volver a la Juntura (JOIN)</a>
+                <a href="join.php" class="btn-back">Volver a JOIN</a>
             </div>
 
         <?php else: ?>

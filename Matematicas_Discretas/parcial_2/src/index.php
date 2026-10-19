@@ -57,6 +57,12 @@ try {
         <?php if ($connected): ?>
             <p><span class="badge-success">Conexión exitosa a la base de datos 'sakila' como 'devuser'</span></p>
 
+            <div style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+                <a href="pages/conditions.php" style="background: #d97706; color: white; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">Condiciones (Filtros)</a>
+                <a href="pages/proyections.php" style="background: #7c3aed; color: white; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">Proyecciones</a>
+                <a href="pages/join.php" style="background: #1a73e8; color: white; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">Junturas (JOINs)</a>
+            </div>
+
             <div class="stats">
                 <div class="stat-box">
                     <h3><?= htmlspecialchars($filmCount); ?></h3>
@@ -65,10 +71,6 @@ try {
                 <div class="stat-box">
                     <h3><?= htmlspecialchars($actorCount); ?></h3>
                     <p>Actores</p>
-                </div>
-                <div class="stat-box">
-                    <h3><?= htmlspecialchars($customerCount); ?></h3>
-                    <p>Clientes</p>
                 </div>
             </div>
 

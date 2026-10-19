@@ -112,6 +112,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<script src="https://jsdelivr.net"></script>-->
     <title>PROYECCIONES | Mates Discretas</title>
     <style>
         body { font-family: system-ui, -apple-system, sans-serif; background: #f4f6f8; color: #333; margin: 30px 20px; }
@@ -147,14 +148,14 @@ try {
 </head>
 <body>
     <div class="card">
-        <h1>Proyecciones Relacionales (Álgebra Relacional)</h1>
+        <h1>Proyecciones Relacionales</h1>
         <p style="color: #64748b; margin-top: -10px;">
             En Matemáticas Discretas, la <strong>proyección</strong> $P_{i_1, i_2, \dots, i_k}(R)$ filtra y conserva únicamente las columnas indicadas de una relación base $R$.
         </p>
 
         <?php if ($connected): ?>
             <p>
-                <span class="badge-success">✓ Conexión con la base de datos realizada con éxito</span>
+                <span class="badge-success">Conexión con la base de datos realizada con éxito</span>
             </p>
 
             <div class="header-actions">
@@ -170,9 +171,10 @@ try {
                     <a href="?limit=20" class="chip <?= $limit == 20 ? 'active' : '' ?>">20</a>
                 </form>
 
-                <div style="display: flex; gap: 10px;">
-                    <a href="join.php" class="btn-outline">🔗 Ir a Junturas (JOINs)</a>
-                    <a href="tablas_origen.php" class="btn-outline" style="background: #475569;">📋 Tablas de Origen</a>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="conditions.php" class="btn-outline" style="background: #d97706;">Condiciones</a>
+                    <a href="join.php" class="btn-outline">Ir a Junturas (JOINs)</a>
+                    <a href="tablas_origen.php" class="btn-outline" style="background: #475569;">Tablas de Origen</a>
                 </div>
             </div>
 
@@ -405,5 +407,12 @@ try {
             </p>
         <?php endif; ?>
     </div>
+    <script>
+        // Tu texto en formato Markdown
+        const textoMarkdown = "$P_{i_1, i_2, \dots, i_k}(R)$";
+
+        // Convertir Markdown a HTML y asignarlo al div
+        document.getElementById("regla").innerHTML = marked.parse(textoMarkdown);
+    </script>
 </body>
 </html>
