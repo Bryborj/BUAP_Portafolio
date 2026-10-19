@@ -77,7 +77,7 @@ catch (\PDOException $e) {
 
         <?php if ($connected): ?>
             <p>
-                <span class="badge-success">✓ Conexión con la base de datos realizada con éxito</span>
+                <span class="badge-success">Conexión con la base de datos realizada con éxito</span>
             </p>
 
             <div class="header-actions">
@@ -94,9 +94,12 @@ catch (\PDOException $e) {
                     <a href="?limit=100" class="chip <?= $limit == 100 ? 'active' : '' ?>">100</a>
                 </form>
 
-                <div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="proyections.php" class="btn-primary" style="background: #7c3aed;">
+                        📊 Proyecciones
+                    </a>
                     <a href="tablas_origen.php" class="btn-outline">
-                        📋 Ver tablas de origen (3 filas c/u) →
+                        📋 Tablas de origen (3 filas c/u)
                     </a>
                 </div>
             </div>

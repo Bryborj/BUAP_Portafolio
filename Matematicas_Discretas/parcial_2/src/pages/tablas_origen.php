@@ -62,7 +62,10 @@ catch (\PDOException $e) {
                 <h1 style="margin: 0; font-size: 24px;">Tablas de Origen de la Juntura</h1>
                 <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">Muestra de las 5 tablas base que intervienen en la operación de relación (3 filas cada una)</p>
             </div>
-            <a href="join.php" class="btn-back">← Volver a la Juntura (JOIN)</a>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="proyections.php" class="btn-back" style="background: #7c3aed;">📊 Proyecciones</a>
+                <a href="join.php" class="btn-back">← Volver a JOIN</a>
+            </div>
         </div>
 
         <?php if ($connected): ?>
