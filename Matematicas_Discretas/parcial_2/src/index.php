@@ -55,7 +55,7 @@ try {
         <p>PHP Versión: <strong><?= phpversion(); ?></strong></p>
 
         <?php if ($connected): ?>
-            <p><span class="badge-success">✓ Conexión exitosa a la base de datos 'sakila' como 'devuser'</span></p>
+            <p><span class="badge-success">Conexión exitosa a la base de datos 'sakila' como 'devuser'</span></p>
 
             <div class="stats">
                 <div class="stat-box">
