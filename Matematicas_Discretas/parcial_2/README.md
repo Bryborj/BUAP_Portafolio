@@ -33,7 +33,7 @@ En la tabla peliculas "film".
 - Categoria (category) (requiere juntura 3)
 - Actor(es) (actor_id) (juntura 2)
 
-## Proyecciones (Solo dejar columnas) (require tabla de films completa) x 6
+## Proyecciones (Solo dejar columnas)  x 6
 
 - P_{1,2, 3}
 - P_{1,2,4}
