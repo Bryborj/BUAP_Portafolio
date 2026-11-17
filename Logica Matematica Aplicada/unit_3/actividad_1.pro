@@ -10,4 +10,4 @@ creditos(calculo, 10).
 creditos(ingles, 4).
 
 % Una materia es pesada si tiene más de 8 créditos
-pesada(M) :- creditos(M, C), C > 8.
+pesada(M) :- creditos(M, C), C >= 8.
