@@ -1,6 +1,6 @@
 <?php
 include '../config/conection.php';
-
+// Hello world.
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 3;
 if ($limit < 1)
     $limit = 1;
